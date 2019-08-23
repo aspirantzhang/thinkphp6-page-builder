@@ -1,0 +1,20 @@
+{
+    "name": "aspirantzhang/thinkphp-antdesign-builder",
+    "description": "A api page builder for AntDesign base on ThinkPHP 6",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "aspirantzhang",
+            "email": "admin@aspirantzhang.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+
+    "autoload": {
+        "psr-4": {
+          "aspirantzhang\\TPAntdBuilder\\": "src/"
+        }
+    }
+}
