@@ -7,6 +7,9 @@ Under development, **DO NOT** apply to production environments !!!
 
 The Package **MUST BE** used in conjunction with the **SPECIFIED** AntDesignPro package (Not published yet)
 
+### Documentation
+pageType: `list`, `create`.
+
 ### Installation
 
 #### Step 1

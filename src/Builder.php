@@ -4,7 +4,6 @@ declare (strict_types = 1);
 namespace aspirantzhang\TPAntdBuilder;
 
 use think\App;
-use Nette\Utils\Arrays;
 
 Class Builder
 {
@@ -118,6 +117,37 @@ Class Builder
         return $this;
     }
 
+    public function addRadio($name, $title)
+    {
+        $this->result[$this->containerName][] = [
+            'component'   =>  'radio',
+            'name'  =>  $name,
+            'title' =>  $title,
+        ];
+        $this->key = array_key_last($this->result[$this->containerName]);
+        return $this;
+    }
+
+    public function addCheckbox($name, $title)
+    {
+        $this->result[$this->containerName][] = [
+            'component'   =>  'checkbox',
+            'name'  =>  $name,
+            'title' =>  $title,
+        ];
+        $this->key = array_key_last($this->result[$this->containerName]);
+        return $this;
+    }
+    public function addSwitch($name, $title)
+    {
+        $this->result[$this->containerName][] = [
+            'component'   =>  'switch',
+            'name'  =>  $name,
+            'title' =>  $title,
+        ];
+        $this->key = array_key_last($this->result[$this->containerName]);
+        return $this;
+    }
 
     public function addDatePicker($name, $title)
     {
@@ -135,6 +165,7 @@ Class Builder
         $this->containerName = 'table';
         return $this;
     }
+
 
     public function addColumn($name, $title)
     {
@@ -167,6 +198,14 @@ Class Builder
         return $this;
     }
 
+
+    public function toForm($name)
+    {
+        $this->containerName = 'form';
+        return $this;
+    }
+
+
     public function format($str)
     {
         $this->result[$this->containerName][$this->key][__FUNCTION__] = $str;
@@ -185,16 +224,22 @@ Class Builder
         return $this;
     }
 
-    public function option($arr)
+    public function option($arr, $default=0)
     {
         $optionArr = [];
+        $num = 0;
         foreach ($arr as $key => $value) {
-            $optionArr[] = [
-                'name'  =>  $key,
-                'value' =>  $value,
+            $buildArr = [
+                'name'  =>  $value,
+                'value' =>  $key,
             ];
+            if ($num == $default) {
+                $buildArr['default'] = true;
+            }
+            $optionArr[] = $buildArr;
+            $num++;
         }
-        $this->result[$this->containerName][$this->key][__FUNCTION__] = $arr;
+        $this->result[$this->containerName][$this->key][__FUNCTION__] = $optionArr;
         return $this;
     }
 
