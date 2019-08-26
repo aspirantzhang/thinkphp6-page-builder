@@ -7,6 +7,8 @@ Class Builder
 {
     protected $result;
     protected $containerName;
+    protected $tableName;
+    protected $columnName;
     protected $component;
     protected $key;
     protected $actionKey;
@@ -24,6 +26,7 @@ Class Builder
         $this->result = [];
         $this->containerName = '';
         $this->tableName = '';
+        $this->columnName = '';
         $this->component = '';
         $this->key = 0;
         $this->actionKey = 0;
@@ -174,13 +177,19 @@ Class Builder
         return $this;
     }
 
-    public function link($uri, $target="_self")
+    public function columnLink($uri, $target="_self")
     {
         $this->result[$this->containerName]['column'][$this->key]['a']['href'] = $uri;
         $this->result[$this->containerName]['column'][$this->key]['a']['target'] = $target;
         return $this;
     }
-
+    public function columTag($arr)
+    {
+        foreach ($arr as $key => $value) {
+            $this->result[$this->containerName]['column'][$this->key]['tag'][$key] = $value;
+        }
+        return $this;
+    }
     public function format($str)
     {
         $this->result[$this->containerName][$this->key][__FUNCTION__] = $str;
