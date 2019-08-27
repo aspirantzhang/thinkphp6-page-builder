@@ -5,6 +5,7 @@ namespace aspirantzhang\TPAntdBuilder;
 
 Class Builder
 {
+    protected $data;
     protected $result;
     protected $containerName;
     protected $tableName;
@@ -21,8 +22,9 @@ Class Builder
      *  toContainer > addElements > Attributes
      */
 
-    public function __construct()
+    public function __construct($data=[])
     {
+        $this->data = $data;
         $this->result = [];
         $this->containerName = '';
         $this->tableName = '';
@@ -52,7 +54,6 @@ Class Builder
 
             if ($this->isGeneralElement($name)) {
 
-
                 switch ($name) {
                     case 'text':
                         $componentName = 'input';
@@ -80,11 +81,17 @@ Class Builder
                         # code...
                         break;
                 }
-                $this->result[$this->containerName][] = [
+
+                $temp = [
                     'component' =>  $componentName,
                     'name'      =>  $arguments[0],
                     'title'     =>  $arguments[1],
                 ];
+
+                if ($this->haveData($arguments[0])) {
+                    $temp['value']  =  $this->haveData($arguments[0]);
+                }
+                $this->result[$this->containerName][] = $temp;
                 $this->key = array_key_last($this->result[$this->containerName]);
 
                 return $this;
@@ -101,6 +108,14 @@ Class Builder
         }
     }
 
+    protected function haveData($key)
+    {
+        if ($this->data && isset($this->data[$key]) && $this->data[$key] != '') {
+            return $this->data[$key];
+        } else {
+            return false;
+        }
+    }
 
     protected function isToContainer($name)
     {
