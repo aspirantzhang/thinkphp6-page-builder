@@ -5,7 +5,7 @@ namespace aspirantzhang\TPAntdBuilder;
 
 Class Builder
 {
-    protected $data;
+    protected $realData;
     protected $result;
     protected $containerName;
     protected $tableName;
@@ -13,6 +13,7 @@ Class Builder
     protected $component;
     protected $key;
     protected $actionKey;
+    protected $pageType;
 
     protected $globalContainers = ['titleBar', 'toolBar', 'searchBar', 'advancedSearch', 'bottomBar'];
     protected $generalElements = ['text', 'button', 'select', 'radio', 'checkbox', 'switch', 'datepicker'];
@@ -22,9 +23,10 @@ Class Builder
      *  toContainer > addElements > Attributes
      */
 
-    public function __construct($data=[])
+    public function __construct($realData=[], $pageType='create')
     {
-        $this->data = $data;
+        $this->realData = $realData;
+        $this->pageType = $pageType;
         $this->result = [];
         $this->containerName = '';
         $this->tableName = '';
@@ -110,8 +112,8 @@ Class Builder
 
     protected function haveData($key)
     {
-        if ($this->data && isset($this->data[$key]) && $this->data[$key] != '') {
-            return $this->data[$key];
+        if ($this->realData && isset($this->realData[$key]) && $this->realData[$key] != '') {
+            return $this->realData[$key];
         } else {
             return false;
         }
@@ -138,19 +140,19 @@ Class Builder
     }
 
 
-    public function page($name, $title)
+    public function pageType($typeName)
     {
-        $this->containerName = __FUNCTION__;
-        $this->result[$this->containerName] = [
-            'name'  =>  $name,
-            'title' =>  $title,
-        ];
+        $this->pageType = $typeName;
+        $this->result['page']['type'] = $typeName;
         return $this;
     }
-
-    public function pageType($str)
+    public function pageTitle($name, $titleArr)
     {
-        $this->result[$this->containerName][__FUNCTION__] = $str;
+        $this->containerName = __FUNCTION__;
+        $pageName = $name.'-'.$this->pageType;
+        $pageTitle = $titleArr[$this->pageType];
+        $this->result['page']['name'] = $pageName;
+        $this->result['page']['title'] = $pageTitle;
         return $this;
     }
 
