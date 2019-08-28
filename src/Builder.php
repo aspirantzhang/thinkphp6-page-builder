@@ -90,7 +90,7 @@ Class Builder
                     'title'     =>  $arguments[1],
                 ];
 
-                if ($this->haveData($arguments[0])) {
+                if ($this->haveData($arguments[0]) !== false) {
                     $temp['value']  =  $this->haveData($arguments[0]);
                 }
                 $this->result[$this->containerName][] = $temp;
@@ -112,7 +112,7 @@ Class Builder
 
     protected function haveData($key)
     {
-        if ($this->realData && isset($this->realData[$key]) && $this->realData[$key] != '') {
+        if (isset($this->realData[$key]) && $this->realData[$key] !== '') {
             return $this->realData[$key];
         } else {
             return false;
