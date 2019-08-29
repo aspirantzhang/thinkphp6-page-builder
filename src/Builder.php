@@ -16,7 +16,7 @@ Class Builder
     protected $pageType;
 
     protected $globalContainers = ['titleBar', 'toolBar', 'searchBar', 'advancedSearch', 'bottomBar'];
-    protected $generalElements = ['text', 'button', 'select', 'radio', 'checkbox', 'switch', 'datepicker'];
+    protected $generalElements = ['text', 'button', 'select', 'radio', 'checkbox', 'switch', 'datepicker', 'textarea'];
 
 
     /**
@@ -77,6 +77,9 @@ Class Builder
                         break;
                     case 'datepicker':
                         $componentName = 'rangePicker';
+                        break;
+                    case 'textarea':
+                        $componentName = 'textarea';
                         break;
 
                     default:
