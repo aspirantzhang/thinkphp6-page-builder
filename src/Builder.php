@@ -15,8 +15,8 @@ Class Builder
     protected $actionKey;
     protected $pageType;
 
-    protected $globalContainers = ['titleBar', 'toolBar', 'searchBar', 'advancedSearch', 'bottomBar'];
-    protected $generalElements = ['text', 'button', 'select', 'radio', 'checkbox', 'switch', 'datepicker', 'textarea'];
+    protected $commonContainers = ['titleBar', 'toolBar', 'searchBar', 'advancedSearch', 'bottomBar'];
+    protected $commonElements = ['text', 'button', 'select', 'radio', 'checkbox', 'switch', 'datepicker', 'textarea', 'tree'];
 
 
     /**
@@ -45,7 +45,7 @@ Class Builder
             $this->containerName = strtolower(substr($name, 2));
             return $this;
 
-        } else if ($this->isGlobalContainer($name)) {
+        } else if ($this->isCommonContainer($name)) {
 
             $this->containerName = $name;
             return $this;
@@ -54,7 +54,9 @@ Class Builder
 
             $name = strtolower(substr($name, 3));
 
-            if ($this->isGeneralElement($name)) {
+            if ($this->isCommonElement($name)) {
+
+                $writeValue = true;
 
                 switch ($name) {
                     case 'text':
@@ -81,6 +83,10 @@ Class Builder
                     case 'textarea':
                         $componentName = 'textarea';
                         break;
+                    case 'tree':
+                        $componentName = 'tree';
+                        $writeValue = false;
+                        break;
 
                     default:
                         # code...
@@ -94,8 +100,22 @@ Class Builder
                 ];
 
                 if ($this->haveData($arguments[0]) !== false) {
-                    $temp['value']  =  $this->haveData($arguments[0]);
+
+                    if ($writeValue == true) {
+                        $temp['value']  =  $this->haveData($arguments[0]);
+                    }
+
+                    // Tree Component Default Value
+                    if ($componentName == 'tree') {
+                        $defaultKeys = [];
+                        foreach ($this->haveData($arguments[0]) as $key => $value) {
+                            $defaultKeys[] = (string)$value['id'];
+                        }
+                        $temp['defaultKeys']  =  $defaultKeys;
+                    }
+
                 }
+
                 $this->result[$this->containerName][] = $temp;
                 $this->key = array_key_last($this->result[$this->containerName]);
 
@@ -103,13 +123,13 @@ Class Builder
 
             } else {
 
-                return 'no exists element';
+                return 'not common element';
 
             }
 
 
         } else {
-            echo 'no';
+            echo 'unknown element';
         }
     }
 
@@ -127,9 +147,9 @@ Class Builder
         return (strpos($name, 'to') === 0) && preg_match('/^[A-Z]+$/', substr($name, 2, 1));
     }
 
-    protected function isGlobalContainer($name)
+    protected function isCommonContainer($name)
     {
-        return in_array($name, $this->globalContainers);
+        return in_array($name, $this->commonContainers);
     }
 
     protected function isAddElement($name)
@@ -137,9 +157,9 @@ Class Builder
         return (strpos($name, 'add') === 0) && preg_match('/^[A-Z]+$/', substr($name, 3, 1));
     }
 
-    protected function isGeneralElement($name)
+    protected function isCommonElement($name)
     {
-        return in_array($name, $this->generalElements);
+        return in_array($name, $this->commonElements);
     }
 
 
