@@ -108,9 +108,17 @@ Class Builder
                     // Tree Component Default Value
                     if ($componentName == 'tree') {
                         $defaultKeys = [];
-                        foreach ($this->haveData($arguments[0]) as $key => $value) {
-                            $defaultKeys[] = (string)$value['id'];
+
+                        if (is_array($this->haveData($arguments[0]))) {
+                            foreach ($this->haveData($arguments[0]) as $key => $value) {
+                                $defaultKeys[] = (string)$value['id'];
+                            }
+                        } else if (is_string($this->haveData($arguments[0])) && (strpos($this->haveData($arguments[0]), ',') !== false)) {
+                            $defaultKeys = explode(',', $this->haveData($arguments[0]));
+                        } else {
+                            $defaultKeys = $this->haveData($arguments[0]);
                         }
+
                         $temp['defaultKeys']  =  $defaultKeys;
                     }
 
