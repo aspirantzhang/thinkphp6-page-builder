@@ -1,12 +1,13 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
 use think\Paginator;
 
 /**
- * AntDesignPro Pagination
+ * AntDesignPro Pagination.
  */
 class AntdPaginationProvider extends Paginator
 {
@@ -19,15 +20,16 @@ class AntdPaginationProvider extends Paginator
         }
 
         return [
-            'dataSource'         => $this->items->toArray(),
-            'pagination'         =>  [
-                    'total'     => $total,
-                    'pageSize'  => $this->listRows(),
-                    'current'   => $this->currentPage(),
+            'dataSource' => $this->items->toArray(),
+            'pagination' => [
+                    'total' => $total,
+                    'per_page' => $this->listRows(),
+                    'page' => $this->currentPage(),
             ],
         ];
     }
-    public function render(){
 
+    public function render()
+    {
     }
 }
