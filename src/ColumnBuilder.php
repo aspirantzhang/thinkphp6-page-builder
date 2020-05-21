@@ -10,7 +10,6 @@ class ColumnBuilder
     public $dataIndex;
     public $key;
     public $type;
-    public $action;
 
     public function column(string $name, string $title)
     {
@@ -30,6 +29,13 @@ class ColumnBuilder
     public function action(array $actions)
     {
         $this->action = $actions;
+
+        return $this;
+    }
+
+    public function values(array $values)
+    {
+        $this->values = $values;
 
         return $this;
     }
