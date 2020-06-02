@@ -27,6 +27,20 @@ class PageBuilder
     {
         $this->page['searchBar'] = $value;
 
+        // Init search bar expand
+        if ($value) {
+            $this->page['searchExpand'] = false;
+        }
+
+        return $this;
+    }
+
+    public function params($params)
+    {
+        if (isset($params['searchExpand']) && 'true' === $params['searchExpand']) {
+            $this->page['searchExpand'] = true;
+        }
+
         return $this;
     }
 

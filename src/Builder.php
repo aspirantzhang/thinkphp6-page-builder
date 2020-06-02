@@ -11,7 +11,7 @@ class Builder
 {
     public static function __callStatic($name, $arguments)
     {
-        if ('page' === $name) {
+        if ('page' === $name || 'params' === $name) {
             return call_user_func_array([new PageBuilder(), $name], $arguments);
         } elseif ('column' === $name) {
             return call_user_func_array([new ColumnBuilder(), $name], $arguments);
