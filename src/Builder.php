@@ -11,12 +11,17 @@ class Builder
 {
     public static function __callStatic($name, $arguments)
     {
-        if ('page' === $name || 'params' === $name) {
-            return call_user_func_array([new PageBuilder(), $name], $arguments);
-        } elseif ('column' === $name) {
-            return call_user_func_array([new ColumnBuilder(), $name], $arguments);
-        } else {
-            return call_user_func_array([new components\Button(), $name], $arguments);
+        switch ($name) {
+            case 'page':
+            case 'params':
+                return call_user_func_array([new PageBuilder(), $name], $arguments);
+            case 'field':
+                return call_user_func_array([new FieldBuilder(), $name], $arguments);
+            case 'action':
+                return call_user_func_array([new ActionBuilder(), $name], $arguments);
+            default:
+                return call_user_func_array([new components\Button(), $name], $arguments);
+                break;
         }
     }
 }

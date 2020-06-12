@@ -56,6 +56,13 @@ class PageBuilder
         return $this;
     }
 
+    public function layout(array $layout)
+    {
+        $this->layout = $layout;
+
+        return $this;
+    }
+
     public function toArray(): array
     {
         return (array) $this;

@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class ColumnBuilder
+class FieldBuilder
 {
     public $title;
     public $dataIndex;
     public $key;
     public $type;
 
-    public function column(string $name, string $title)
+    public function field(string $name, string $title)
     {
         $this->title = $title;
         $this->dataIndex = $this->key = $name;
@@ -22,13 +22,6 @@ class ColumnBuilder
     public function type(string $type = 'text')
     {
         $this->type = $type;
-
-        return $this;
-    }
-
-    public function action(array $actions)
-    {
-        $this->action = $actions;
 
         return $this;
     }
