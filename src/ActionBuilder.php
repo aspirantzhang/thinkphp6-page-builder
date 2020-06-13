@@ -13,7 +13,7 @@ class ActionBuilder
     public function action(array $actions)
     {
         $this->dataIndex = $this->key = $this->type = 'action';
-        $this->action = $actions;
+        $this->actions = $actions;
 
         return $this;
     }
