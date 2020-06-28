@@ -41,9 +41,12 @@ class Button
         return $this;
     }
 
-    public function action(string $value)
+    public function action(string $value, string $method = '')
     {
         $this->action = $value;
+        if ($method) {
+            $this->action_type = $method;
+        }
 
         return $this;
     }
