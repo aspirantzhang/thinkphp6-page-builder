@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class ActionBuilder
+class ActionsBuilder
 {
     public $dataIndex;
     public $key;
     public $type;
 
-    public function action(array $actions)
+    public function actions(array $actions)
     {
-        $this->dataIndex = $this->key = $this->type = 'action';
+        $this->dataIndex = $this->key = $this->type = 'actions';
         $this->actions = $actions;
 
         return $this;

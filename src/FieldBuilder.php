@@ -32,4 +32,11 @@ class FieldBuilder
 
         return $this;
     }
+
+    public function sorter(bool $value)
+    {
+        $this->sorter = $value;
+
+        return $this;
+    }
 }

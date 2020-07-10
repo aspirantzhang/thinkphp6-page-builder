@@ -9,14 +9,12 @@ class Button
     public $component;
     public $text;
     public $type;
-    public $onClick;
     public $action;
 
     public function __construct()
     {
         $this->component = 'button';
         $this->type = 'primary';
-        $this->onClick = '';
         $this->action = '';
     }
 
@@ -34,19 +32,24 @@ class Button
         return $this;
     }
 
-    public function onClick(string $value)
+    public function action(string $value)
     {
-        $this->onClick = $value;
+        $this->action = $value;
 
         return $this;
     }
 
-    public function action(string $value, string $method = '')
+    public function uri(string $value)
     {
-        $this->action = $value;
-        if ($method) {
-            $this->action_type = $method;
-        }
+        $this->uri = $value;
+        $this->method = 'get';
+
+        return $this;
+    }
+
+    public function method(string $value)
+    {
+        $this->method = $value;
 
         return $this;
     }
