@@ -39,4 +39,11 @@ class FieldBuilder
 
         return $this;
     }
+
+    public function data(array $data)
+    {
+        $this->data = $data;
+
+        return $this;
+    }
 }
