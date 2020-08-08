@@ -46,4 +46,10 @@ class FieldBuilder
 
         return $this;
     }
+
+    public function hideInColumn(bool $value)
+    {
+        $this->hideInColumn = $value;
+        return $this;
+    }
 }
