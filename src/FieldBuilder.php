@@ -52,4 +52,10 @@ class FieldBuilder
         $this->hideInColumn = $value;
         return $this;
     }
+
+    public function disabled(bool $value)
+    {
+        $this->disabled = $value;
+        return $this;
+    }
 }
