@@ -26,13 +26,6 @@ class FieldBuilder
         return $this;
     }
 
-    public function values(array $values)
-    {
-        $this->values = $values;
-
-        return $this;
-    }
-
     public function sorter(bool $value)
     {
         $this->sorter = $value;
