@@ -22,9 +22,9 @@ class AntdPaginationProvider extends Paginator
         return [
             'dataSource' => $this->items->toArray(),
             'pagination' => [
-                    'total' => $total,
-                    'per_page' => $this->listRows(),
-                    'page' => $this->currentPage(),
+                'total' => $total,
+                'per_page' => $this->listRows(),
+                'page' => $this->currentPage(),
             ],
         ];
     }

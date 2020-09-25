@@ -23,6 +23,27 @@ class FieldBuilder
     {
         $this->type = $type;
 
+        switch ($type) {
+            case 'tag':
+                $this->mode = 'multiple';
+                break;
+            case 'trash':
+                $this->type = 'tag';
+                $this->data = [
+                    'onlyTrashed' => 'Only Trashed',
+                    'withTrashed' => 'With Trashed',
+                    'withoutTrashed' => 'Without Trashed',
+                ];
+                $this->mode = '';
+                $this->hideInColumn = true;
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+
+
         return $this;
     }
 
@@ -49,6 +70,12 @@ class FieldBuilder
     public function disabled(bool $value)
     {
         $this->disabled = $value;
+        return $this;
+    }
+
+    public function mode(string $value)
+    {
+        $this->mode = $value;
         return $this;
     }
 }
