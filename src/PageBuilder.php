@@ -30,11 +30,6 @@ class PageBuilder
         return $this;
     }
 
-    // public function params($params)
-    // {
-    //     return $this;
-    // }
-
     public function tableToolBar(array $tableToolBar)
     {
         $this->layout['tableToolBar'] = $tableToolBar;
@@ -56,9 +51,31 @@ class PageBuilder
         return $this;
     }
 
-    public function layout(array $layout)
+    // Layout
+
+    public function main(array $data, string $name = 'main', string $title = 'Main')
     {
-        $this->layout = $layout;
+        $this->layout['main']['name'] = $name;
+        $this->layout['main']['title'] = $title;
+        $this->layout['main']['data'] = $data;
+
+        return $this;
+    }
+
+    public function sidebar(array $data, string $name = 'sidebar', string $title = 'Sidebar')
+    {
+        $this->layout['sidebar']['name'] = $name;
+        $this->layout['sidebar']['title'] = $title;
+        $this->layout['sidebar']['data'] = $data;
+
+        return $this;
+    }
+
+    public function actions(array $data, string $name = 'actions', string $title = 'Actions')
+    {
+        $this->layout['actions']['name'] = $name;
+        $this->layout['actions']['title'] = $title;
+        $this->layout['actions']['data'] = $data;
 
         return $this;
     }
