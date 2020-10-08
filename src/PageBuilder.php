@@ -53,30 +53,46 @@ class PageBuilder
 
     // Layout
 
-    public function main(array $data, string $name = 'main', string $title = 'Main')
+    public function tab(array $data, string $name = 'basic', string $title = 'Basic')
     {
-        $this->layout['main']['name'] = $name;
-        $this->layout['main']['title'] = $title;
-        $this->layout['main']['data'] = $data;
+        $tab = [
+            'name' => $name,
+            'title' => $title,
+            'data' => $data,
+        ];
+        $this->layout['tabs'][] = $tab;
 
         return $this;
     }
 
     public function sidebar(array $data, string $name = 'sidebar', string $title = 'Sidebar')
     {
-        $this->layout['sidebar']['name'] = $name;
-        $this->layout['sidebar']['title'] = $title;
-        $this->layout['sidebar']['data'] = $data;
+        $sidebar = [
+            'name' => $name,
+            'title' => $title,
+            'data' => $data,
+        ];
+        $this->layout['sidebars'][] = $sidebar;
 
         return $this;
     }
 
-    public function actions(array $data, string $name = 'actions', string $title = 'Actions')
+    public function action(array $data, string $name = 'actions', string $title = 'Actions')
     {
-        $this->layout['actions']['name'] = $name;
-        $this->layout['actions']['title'] = $title;
-        $this->layout['actions']['data'] = $data;
+        $action = [
+            'name' => $name,
+            'title' => $title,
+            'data' => $data,
+        ];
+        $this->layout['actions'][] = $action;
 
+        return $this;
+    }
+
+    public function actions(array $data)
+    {
+        $this->layout['actions'] = $data;
+        
         return $this;
     }
 

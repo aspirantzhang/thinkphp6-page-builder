@@ -17,6 +17,8 @@ class Builder
                 return call_user_func_array([new PageBuilder(), $name], $params);
             case 'field':
                 return call_user_func_array([new FieldBuilder(), $name], $params);
+            case 'actions':
+                return call_user_func_array([new ActionsBuilder(), $name], $params);
             default:
                 return call_user_func_array([new components\Button(), $name], $params);
                 break;
