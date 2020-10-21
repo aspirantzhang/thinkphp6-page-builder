@@ -42,7 +42,6 @@ class Button
     public function uri(string $value)
     {
         $this->uri = $value;
-        $this->method = 'get';
 
         return $this;
     }
