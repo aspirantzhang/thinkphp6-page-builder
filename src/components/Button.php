@@ -18,9 +18,12 @@ class Button
         $this->action = '';
     }
 
-    public function button($value)
+    public function button($value, $id = null)
     {
         $this->text = $value;
+        if ($id) {
+            $this->id = $id;
+        }
 
         return $this;
     }
