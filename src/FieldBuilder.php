@@ -24,18 +24,39 @@ class FieldBuilder
         $this->type = $type;
 
         switch ($type) {
-            case 'tag':
+            case 'select':
                 $this->mode = 'multiple';
                 break;
             case 'trash':
-                $this->type = 'tag';
+                $this->type = 'select';
                 $this->data = [
-                    'onlyTrashed' => 'Only Trashed',
-                    'withTrashed' => 'With Trashed',
-                    'withoutTrashed' => 'Without Trashed',
+                    [
+                        'title' => 'Only Trashed',
+                        'value' => 'onlyTrashed'
+                    ],
+                    [
+                        'title' => 'With Trashed',
+                        'value' => 'withTrashed'
+                    ],
+                    [
+                        'title' => 'Without Trashed',
+                        'value' => 'withoutTrashed'
+                    ],
                 ];
                 $this->mode = '';
                 $this->hideInColumn = true;
+                break;
+            case 'switch':
+                $this->data = [
+                    [
+                        'title' => 'Enabled',
+                        'value' => 1,
+                    ],
+                    [
+                        'title' => 'Disabled',
+                        'value' => 0,
+                    ],
+                ];
                 break;
             
             default:
