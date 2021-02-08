@@ -5,23 +5,24 @@ declare(strict_types=1);
 namespace aspirantzhang\TPAntdBuilder;
 
 /**
- * Builder for page & form.
+ * Ant Design builder
  */
 class Builder
 {
-    public static function __callStatic($name, $params)
+    public static function page(...$params)
     {
-        switch ($name) {
-            case 'page':
-            case 'params':
-                return call_user_func_array([new PageBuilder(), $name], $params);
-            case 'field':
-                return call_user_func_array([new FieldBuilder(), $name], $params);
-            case 'actions':
-                return call_user_func_array([new ActionsBuilder(), $name], $params);
-            default:
-                return call_user_func_array([new components\Button(), $name], $params);
-                break;
-        }
+        return (new PageBuilder())->page(...$params);
+    }
+    public static function field(...$params)
+    {
+        return (new FieldBuilder())->field(...$params);
+    }
+    public static function actions(...$params)
+    {
+        return (new ActionsBuilder())->actions(...$params);
+    }
+    public static function button(...$params)
+    {
+        return (new components\Button())->button(...$params);
     }
 }
