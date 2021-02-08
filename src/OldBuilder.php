@@ -167,7 +167,7 @@ class OldBuilder
     public function pageTitle($name, $titleArr)
     {
         $this->containerName = __FUNCTION__;
-        $pageName = $name.'-'.$this->pageType;
+        $pageName = $name . '-' . $this->pageType;
         $pageTitle = $titleArr[$this->pageType];
         $this->result['page']['name'] = $pageName;
         $this->result['page']['title'] = $pageTitle;
