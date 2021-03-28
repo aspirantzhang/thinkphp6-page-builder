@@ -6,11 +6,15 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class PageBuilder
 {
-    public $page;
-    public $layout;
+    protected $page = [
+        'name' => 'page-name',
+        'title' => '',
+        'type' => 'basicList',
+    ];
 
-    public function page(string $title)
+    public function page(string $name, string $title = '')
     {
+        $this->page['name'] = $name;
         $this->page['title'] = $title;
 
         return $this;
@@ -23,6 +27,7 @@ class PageBuilder
         return $this;
     }
 
+    // BasicList
     public function searchBar(bool $value = false)
     {
         $this->page['searchBar'] = $value;
@@ -51,9 +56,8 @@ class PageBuilder
         return $this;
     }
 
-    // Layout
-
-    public function tab(array $data, string $name = 'basic', string $title = 'Basic')
+    // Page or Modal
+    public function tab(string $name = 'basic', string $title = '', array $data = [])
     {
         $tab = [
             'name' => $name,
@@ -65,7 +69,7 @@ class PageBuilder
         return $this;
     }
 
-    public function sidebar(array $data, string $name = 'sidebar', string $title = 'Sidebar')
+    public function sidebar(string $name = 'sidebar', string $title = '', array $data = [])
     {
         $sidebar = [
             'name' => $name,
@@ -77,7 +81,7 @@ class PageBuilder
         return $this;
     }
 
-    public function action(array $data, string $name = 'actions', string $title = 'Actions')
+    public function action(string $name = 'actions', string $title = '', array $data = [])
     {
         $action = [
             'name' => $name,
@@ -86,13 +90,6 @@ class PageBuilder
         ];
         $this->layout['actions'][] = $action;
 
-        return $this;
-    }
-
-    public function actions(array $data)
-    {
-        $this->layout['actions'] = $data;
-        
         return $this;
     }
 
