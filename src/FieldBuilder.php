@@ -6,20 +6,19 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class FieldBuilder
 {
+    public $name;
     public $title;
-    public $dataIndex;
-    public $key;
-    public $type;
+    public $type = 'text';
 
-    public function field(string $name, string $title)
+    public function field(string $name, string $title = '')
     {
+        $this->name = $name;
         $this->title = $title;
-        $this->dataIndex = $this->key = $name;
 
         return $this;
     }
 
-    public function type(string $type = 'text')
+    public function type(string $type)
     {
         $this->type = $type;
 
@@ -85,18 +84,21 @@ class FieldBuilder
     public function hideInColumn(bool $value)
     {
         $this->hideInColumn = $value;
+
         return $this;
     }
 
-    public function disabled(bool $value)
+    public function editDisabled(bool $value)
     {
-        $this->disabled = $value;
+        $this->editDisabled = $value;
+
         return $this;
     }
 
     public function mode(string $value)
     {
         $this->mode = $value;
+
         return $this;
     }
 }
