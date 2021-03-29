@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace think\test\antdBuilder;
+namespace aspirantzhang\test\antdBuilder;
 
 use aspirantzhang\TPAntdBuilder\Builder;
 
