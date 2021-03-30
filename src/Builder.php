@@ -17,12 +17,8 @@ class Builder
     {
         return (new FieldBuilder())->field(...$params);
     }
-    public static function actions(...$params)
-    {
-        return (new ActionsBuilder())->actions(...$params);
-    }
     public static function button(...$params)
     {
-        return (new components\Button())->button(...$params);
+        return (new ButtonBuilder())->button(...$params);
     }
 }
