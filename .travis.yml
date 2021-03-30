@@ -1,0 +1,9 @@
+sudo: false
+
+language: php
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction --dev
+
+script: phpunit
