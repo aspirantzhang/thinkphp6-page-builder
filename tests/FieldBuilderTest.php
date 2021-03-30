@@ -14,7 +14,12 @@ class FieldBuilderTest extends \PHPUnit\Framework\TestCase
         $expected = [
             'name' => '',
             'title' => '',
-            'type' => 'text'
+            'type' => 'text',
+            'data' => [],
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => null
         ];
         $this->assertEqualsCanonicalizing($expected, (array)$actual);
     }

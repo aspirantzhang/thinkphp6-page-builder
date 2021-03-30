@@ -17,6 +17,8 @@ class ButtonBuilderTest extends \PHPUnit\Framework\TestCase
             'name' => '',
             'title' => '',
             'call' => '',
+            'method' => null,
+            'uri' => null
         ];
         $this->assertEqualsCanonicalizing($expected, (array)$actual);
     }

@@ -9,16 +9,16 @@ namespace aspirantzhang\TPAntdBuilder;
  */
 class Builder
 {
-    public static function page(...$params)
+    public static function page(string $name, string $title = '')
     {
-        return (new PageBuilder())->page(...$params);
+        return (new PageBuilder())->page($name, $title);
     }
-    public static function field(...$params)
+    public static function field(string $name, string $title = '')
     {
-        return (new FieldBuilder())->field(...$params);
+        return (new FieldBuilder())->field($name, $title);
     }
-    public static function button(...$params)
+    public static function button(string $name, string $title = '')
     {
-        return (new ButtonBuilder())->button(...$params);
+        return (new ButtonBuilder())->button($name, $title);
     }
 }

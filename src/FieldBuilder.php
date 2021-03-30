@@ -6,9 +6,14 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class FieldBuilder
 {
-    protected $name;
-    protected $title;
-    protected $type = 'text';
+    public $name;
+    public $title;
+    public $type = 'text';
+    public $data = [];
+    public $hideInColumn = null;
+    public $sorter = null;
+    public $editDisabled = null;
+    public $mode = null;
 
     public function field(string $name, string $title = '')
     {

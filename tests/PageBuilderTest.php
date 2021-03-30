@@ -17,6 +17,7 @@ class PageBuilderTest extends \PHPUnit\Framework\TestCase
                 'title' => '',
                 'type' => 'basicList',
             ],
+            'layout' => []
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }

@@ -6,11 +6,12 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class PageBuilder
 {
-    protected $page = [
+    public $page = [
         'name' => 'page-name',
         'title' => '',
         'type' => 'basicList',
     ];
+    public $layout = [];
 
     public function page(string $name, string $title = '')
     {

@@ -6,11 +6,13 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class ButtonBuilder
 {
-    protected $component = "button";
-    protected $type = "primary";
-    protected $name;
-    protected $title;
-    protected $call = '';
+    public $component = "button";
+    public $type = "primary";
+    public $name;
+    public $title;
+    public $call = null;
+    public $method = null;
+    public $uri = null;
 
     public function button(string $name, string $title = '')
     {
