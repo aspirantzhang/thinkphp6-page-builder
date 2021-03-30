@@ -4,7 +4,10 @@ language: php
 
 php:
   - '7.4'
-  - hhvm
+
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 before_script:
   - composer self-update
