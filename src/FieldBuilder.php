@@ -6,9 +6,9 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class FieldBuilder
 {
-    public $name;
-    public $title;
-    public $type = 'text';
+    protected $name;
+    protected $title;
+    protected $type = 'text';
 
     public function field(string $name, string $title = '')
     {
