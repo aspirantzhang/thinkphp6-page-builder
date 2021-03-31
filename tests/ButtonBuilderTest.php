@@ -6,7 +6,7 @@ namespace aspirantzhang\test\antdBuilder;
 
 use aspirantzhang\TPAntdBuilder\Builder;
 
-class ButtonBuilderTest extends \PHPUnit\Framework\TestCase
+class ButtonBuilderTest extends TestCase
 {
     public function testEmptyParamsShouldReturnInitSchema()
     {
@@ -40,7 +40,6 @@ class ButtonBuilderTest extends \PHPUnit\Framework\TestCase
             'uri' => 'unit/test/uri',
             'method' => 'delete'
         ];
-        var_dump($actual);
         $this->assertEqualsCanonicalizing($expected, (array)$actual);
     }
 }

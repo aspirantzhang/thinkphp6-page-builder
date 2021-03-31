@@ -6,7 +6,7 @@ namespace aspirantzhang\test\antdBuilder;
 
 use aspirantzhang\TPAntdBuilder\Builder;
 
-class PageBuilderTest extends \PHPUnit\Framework\TestCase
+class PageBuilderTest extends TestCase
 {
     public function testEmptyParamsShouldReturnInitSchema()
     {
