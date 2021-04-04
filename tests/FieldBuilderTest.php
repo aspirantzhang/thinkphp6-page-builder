@@ -45,4 +45,66 @@ class FieldBuilderTest extends TestCase
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
+
+    public function testMoreFieldType()
+    {
+        $selectActual = (array)Builder::field('unitTest', 'Unit Test')
+                ->type('select');
+        $selectExpected = [
+            'name' => 'unitTest',
+            'title' => 'Unit Test',
+            'type' => 'select',
+            'data' => [],
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => 'multiple',
+        ];
+        $this->assertEqualsCanonicalizing($selectExpected, $selectActual);
+
+        $trashActual = (array)Builder::field('unitTest', 'Unit Test')
+                ->type('trash');
+        $trashExpected = [
+            'name' => 'unitTest',
+            'title' => 'Unit Test',
+            'type' => 'select',
+            'data' => [
+                        [
+                            'title' => 'Only Trashed',
+                            'value' => 'onlyTrashed'
+                        ],
+                        [
+                            'title' => 'With Trashed',
+                            'value' => 'withTrashed'
+                        ],
+                        [
+                            'title' => 'Without Trashed',
+                            'value' => 'withoutTrashed'
+                        ],
+                    ],
+            'hideInColumn' => true,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => ''
+        ];
+        $this->assertEqualsCanonicalizing($trashExpected, $trashActual);
+    }
+
+    public function testUnknownFieldType()
+    {
+        $actual = (array)Builder::field('unitTest', 'Unit Test')
+                ->type('whatever');
+
+        $expected = [
+            'name' => 'unitTest',
+            'title' => 'Unit Test',
+            'type' => 'whatever',
+            'data' => [],
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => null
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
 }
