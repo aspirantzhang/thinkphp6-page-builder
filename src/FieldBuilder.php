@@ -20,6 +20,10 @@ class FieldBuilder
         $this->name = $name;
         $this->title = $title;
 
+        if ($name === 'actions') {
+            $this->type = 'actions';
+        }
+
         return $this;
     }
 

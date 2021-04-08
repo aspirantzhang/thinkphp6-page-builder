@@ -88,6 +88,19 @@ class FieldBuilderTest extends TestCase
             'mode' => ''
         ];
         $this->assertEqualsCanonicalizing($trashExpected, $trashActual);
+
+        $actionsActual = (array)Builder::field('actions', 'Unit Test Action');
+        $actionsExpected = [
+            'name' => 'actions',
+            'title' => 'Unit Test Action',
+            'type' => 'actions',
+            'data' => [],
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => null,
+        ];
+        $this->assertEqualsCanonicalizing($actionsExpected, $actionsActual);
     }
 
     public function testUnknownFieldType()
