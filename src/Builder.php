@@ -21,4 +21,8 @@ class Builder
     {
         return (new ButtonBuilder())->button($name, $title);
     }
+    public static function element()
+    {
+        return (new ElementBuilder());
+    }
 }
