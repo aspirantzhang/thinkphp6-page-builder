@@ -9,7 +9,7 @@
       "email": "admin@aspirantzhang.com"
     }
   ],
-  "minimum-stability": "dev",
+  "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
       "aspirantzhang\\TPAntdBuilder\\": "src/"
@@ -21,6 +21,7 @@
     }
   },
   "require-dev": {
-    "phpunit/phpunit": "10.0.x-dev"
+    "phpunit/phpunit": "^9.5",
+    "mockery/mockery": "^1.4"
   }
 }
