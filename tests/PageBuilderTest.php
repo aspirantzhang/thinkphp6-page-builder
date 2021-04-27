@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace aspirantzhang\test\antdBuilder;
 
+use Mockery as m;
 use aspirantzhang\TPAntdBuilder\Builder;
 
 class PageBuilderTest extends TestCase
@@ -15,7 +16,7 @@ class PageBuilderTest extends TestCase
             'page' => [
                 'name' => 'page-name',
                 'title' => '',
-                'type' => 'basicList',
+                'type' => '',
             ],
             'layout' => []
         ];
@@ -60,6 +61,22 @@ class PageBuilderTest extends TestCase
                     [ 'name' => 'unit-test-action-2', 'title' => 'Unit Test Action 2', 'data' => ['action2'] ],
                 ],
             ]
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
+
+    public function testLanguageParse()
+    {
+        $mock = m::mock('alias:think\facade\Lang');
+        $mock->shouldReceive('get')->andReturn('Valid translation');
+        $actual = Builder::page('model.page-name')->toArray();
+        $expected = [
+            'page' => [
+                'name' => 'page-name',
+                'title' => 'Valid translation',
+                'type' => '',
+            ],
+            'layout' => []
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }

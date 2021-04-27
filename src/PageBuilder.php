@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class PageBuilder
+class PageBuilder extends Common
 {
     public $page = [
-        'name' => 'page-name',
+        'name' => '',
         'title' => '',
-        'type' => 'basicList',
+        'type' => '',
     ];
     public $layout = [];
 
@@ -17,6 +17,14 @@ class PageBuilder
     {
         $this->page['name'] = $name;
         $this->page['title'] = $title;
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $this->page['name'] = $nameId[1];
+            if ($title === '') {
+                $this->page['title'] = $this->lang($name);
+            }
+        }
 
         return $this;
     }
