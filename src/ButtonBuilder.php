@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class ButtonBuilder
+class ButtonBuilder extends Common
 {
     public $component = "button";
     public $type = "primary";
@@ -17,7 +17,19 @@ class ButtonBuilder
     public function button(string $name, string $title = '')
     {
         $this->name = $name;
-        $this->title = $title ?: $name;
+        $this->title = $title;
+
+        if ($title === '') {
+            $this->title = $this->lang($name);
+        }
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $this->name = $nameId[1];
+            if ($title === '') {
+                $this->title = $this->lang($name);
+            }
+        }
 
         return $this;
     }

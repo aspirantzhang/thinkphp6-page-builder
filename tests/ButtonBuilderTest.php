@@ -15,7 +15,7 @@ class ButtonBuilderTest extends TestCase
             'component' => 'button',
             'type' => 'primary',
             'name' => '',
-            'title' => '',
+            'title' => 'Valid translation',
             'call' => '',
             'method' => null,
             'uri' => null
@@ -39,6 +39,21 @@ class ButtonBuilderTest extends TestCase
             'call' => 'unitTest',
             'uri' => 'unit/test/uri',
             'method' => 'delete'
+        ];
+        $this->assertEqualsCanonicalizing($expected, (array)$actual);
+    }
+
+    public function testLanguageParser()
+    {
+        $actual = Builder::button('model.unit-test');
+        $expected = [
+            'component' => 'button',
+            'type' => 'primary',
+            'name' => 'unit-test',
+            'title' => 'Valid translation',
+            'call' => '',
+            'method' => null,
+            'uri' => null
         ];
         $this->assertEqualsCanonicalizing($expected, (array)$actual);
     }
