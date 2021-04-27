@@ -73,6 +73,19 @@ class PageBuilder extends Common
             'title' => $title,
             'data' => $data,
         ];
+
+        if ($title === '') {
+            $tab['title'] = $this->lang($name);
+        }
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $tab['name'] = $nameId[1];
+            if ($title === '') {
+                $tab['title'] = $this->lang($name);
+            }
+        }
+
         $this->layout['tabs'][] = $tab;
 
         return $this;
@@ -85,6 +98,19 @@ class PageBuilder extends Common
             'title' => $title,
             'data' => $data,
         ];
+
+        if ($title === '') {
+            $sidebar['title'] = $this->lang($name);
+        }
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $sidebar['name'] = $nameId[1];
+            if ($title === '') {
+                $sidebar['title'] = $this->lang($name);
+            }
+        }
+
         $this->layout['sidebars'][] = $sidebar;
 
         return $this;
@@ -97,6 +123,19 @@ class PageBuilder extends Common
             'title' => $title,
             'data' => $data,
         ];
+
+        if ($title === '') {
+            $action['title'] = $this->lang($name);
+        }
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $action['name'] = $nameId[1];
+            if ($title === '') {
+                $action['title'] = $this->lang($name);
+            }
+        }
+        
         $this->layout['actions'][] = $action;
 
         return $this;

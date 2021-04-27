@@ -66,14 +66,34 @@ class PageBuilderTest extends TestCase
 
     public function testLanguageParse()
     {
-        $actual = Builder::page('model.page-name')->toArray();
+        $actual = Builder::page('model.page-name')
+            ->tab('model.unit-tab', '', ['tab1'])
+            ->tab('model.unit-tab-2', '', ['tab2'])
+            ->sidebar('model.unit-sidebar', '', ['sidebar1'])
+            ->sidebar('model.unit-sidebar-2', '', ['sidebar2'])
+            ->action('model.unit-action', '', ['action1'])
+            ->action('model.unit-action-2', '', ['action2'])
+            ->toArray();
         $expected = [
             'page' => [
                 'name' => 'page-name',
                 'title' => 'Valid translation',
                 'type' => '',
             ],
-            'layout' => []
+            'layout' => [
+                'tabs' => [
+                    [ 'name' => 'unit-tab', 'title' => 'Valid translation', 'data' => ['tab1'] ],
+                    [ 'name' => 'unit-tab-2', 'title' => 'Valid translation', 'data' => ['tab2'] ],
+                ],
+                'sidebars' => [
+                    [ 'name' => 'unit-sidebar', 'title' => 'Valid translation', 'data' => ['sidebar1'] ],
+                    [ 'name' => 'unit-sidebar-2', 'title' => 'Valid translation', 'data' => ['sidebar2'] ],
+                ],
+                'actions' => [
+                    [ 'name' => 'unit-action', 'title' => 'Valid translation', 'data' => ['action1'] ],
+                    [ 'name' => 'unit-action-2', 'title' => 'Valid translation', 'data' => ['action2'] ],
+                ],
+            ]
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
