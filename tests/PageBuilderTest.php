@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace aspirantzhang\test\antdBuilder;
 
-use Mockery as m;
 use aspirantzhang\TPAntdBuilder\Builder;
 
 class PageBuilderTest extends TestCase
@@ -67,8 +66,6 @@ class PageBuilderTest extends TestCase
 
     public function testLanguageParse()
     {
-        $mock = m::mock('alias:think\facade\Lang');
-        $mock->shouldReceive('get')->andReturn('Valid translation');
         $actual = Builder::page('model.page-name')->toArray();
         $expected = [
             'page' => [

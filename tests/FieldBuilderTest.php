@@ -13,7 +13,7 @@ class FieldBuilderTest extends TestCase
         $actual = Builder::field('');
         $expected = [
             'name' => '',
-            'title' => '',
+            'title' => 'Valid translation',
             'type' => 'text',
             'data' => [],
             'hideInColumn' => null,
@@ -36,6 +36,28 @@ class FieldBuilderTest extends TestCase
         $expected = [
             'name' => 'unitTest',
             'title' => 'Unit Test',
+            'type' => 'switch',
+            'data' => ['unitTestData'],
+            'sorter' => true,
+            'editDisabled' => true,
+            'hideInColumn' => true,
+            'mode' => 'multiple',
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
+
+    public function testLanguageParse()
+    {
+        $actual = (array)Builder::field('model.unitTest')
+                ->type('switch')
+                ->sorter(true)
+                ->editDisabled(true)
+                ->hideInColumn(true)
+                ->mode('multiple')
+                ->data(['unitTestData']);
+        $expected = [
+            'name' => 'unitTest',
+            'title' => 'Valid translation',
             'type' => 'switch',
             'data' => ['unitTestData'],
             'sorter' => true,
@@ -70,15 +92,15 @@ class FieldBuilderTest extends TestCase
             'type' => 'select',
             'data' => [
                         [
-                            'title' => 'Only Trashed',
+                            'title' => 'Valid translation',
                             'value' => 'onlyTrashed'
                         ],
                         [
-                            'title' => 'With Trashed',
+                            'title' => 'Valid translation',
                             'value' => 'withTrashed'
                         ],
                         [
-                            'title' => 'Without Trashed',
+                            'title' => 'Valid translation',
                             'value' => 'withoutTrashed'
                         ],
                     ],
