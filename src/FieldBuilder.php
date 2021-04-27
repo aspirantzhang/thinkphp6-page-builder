@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class FieldBuilder
+class FieldBuilder extends Common
 {
     public $name;
     public $title;
@@ -19,6 +19,18 @@ class FieldBuilder
     {
         $this->name = $name;
         $this->title = $title;
+
+        if ($title === '') {
+            $this->title = $this->lang($name);
+        }
+
+        if (strpos($name, '.')) {
+            $nameId = explode('.', $name, 2);
+            $this->name = $nameId[1];
+            if ($title === '') {
+                $this->title = $this->lang($name);
+            }
+        }
 
         if ($name === 'actions') {
             $this->type = 'actions';
@@ -39,15 +51,15 @@ class FieldBuilder
                 $this->type = 'select';
                 $this->data = [
                     [
-                        'title' => 'Only Trashed',
+                        'title' => $this->lang('onlyTrashed'),
                         'value' => 'onlyTrashed'
                     ],
                     [
-                        'title' => 'With Trashed',
+                        'title' => $this->lang('withTrashed'),
                         'value' => 'withTrashed'
                     ],
                     [
-                        'title' => 'Without Trashed',
+                        'title' => $this->lang('withoutTrashed'),
                         'value' => 'withoutTrashed'
                     ],
                 ];
@@ -57,11 +69,11 @@ class FieldBuilder
             case 'switch':
                 $this->data = [
                     [
-                        'title' => 'Enabled',
+                        'title' => $this->lang('enabled'),
                         'value' => 1,
                     ],
                     [
-                        'title' => 'Disabled',
+                        'title' => $this->lang('disabled'),
                         'value' => 0,
                     ],
                 ];
