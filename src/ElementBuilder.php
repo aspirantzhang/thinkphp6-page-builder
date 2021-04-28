@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
-class ElementBuilder
+class ElementBuilder extends Common
 {
-    public function singleChoice($trueValueTitle = 'Enabled', $falseValueTitle = 'Disabled')
+    public function singleChoice($trueValueName = 'enabled', $falseValueName = 'disabled')
     {
         return [
             [
-                'title' => $trueValueTitle,
+                'title' => $this->lang('enabled'),
                 'value' => 1,
             ],
             [
-                'title' => $falseValueTitle,
+                'title' => $this->lang('disabled'),
                 'value' => 0,
             ],
         ];

@@ -13,11 +13,11 @@ class ElementBuilderTest extends TestCase
         $actual = Builder::element()->singleChoice();
         $expected = [
             [
-                'title' => 'Enabled',
+                'title' => 'Valid translation',
                 'value' => 1,
             ],
             [
-                'title' => 'Disabled',
+                'title' => 'Valid translation',
                 'value' => 0,
             ],
         ];
@@ -29,11 +29,11 @@ class ElementBuilderTest extends TestCase
         $actual = Builder::element()->singleChoice('Unit', 'Test');
         $expected = [
             [
-                'title' => 'Unit',
+                'title' => 'Valid translation',
                 'value' => 1,
             ],
             [
-                'title' => 'Test',
+                'title' => 'Valid translation',
                 'value' => 0,
             ],
         ];
