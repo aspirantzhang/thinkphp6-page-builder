@@ -29,12 +29,12 @@ class PageBuilderTest extends TestCase
                 ->tableToolBar(['tableToolBar'])
                 ->batchToolBar(['batchToolBar'])
                 ->tableColumn(['tableColumn'])
-                ->tab('unit-test-tab-1', 'Unit Test Tab 1', ['tab1'])
-                ->tab('unit-test-tab-2', 'Unit Test Tab 2', ['tab2'])
-                ->sidebar('unit-test-sidebar-1', 'Unit Test Sidebar 1', ['sidebar1'])
-                ->sidebar('unit-test-sidebar-2', 'Unit Test Sidebar 2', ['sidebar2'])
-                ->action('unit-test-action-1', 'Unit Test Action 1', ['action1'])
-                ->action('unit-test-action-2', 'Unit Test Action 2', ['action2'])
+                ->tab('unit-test-tab-1', ['tab1'], 'Unit Test Tab 1')
+                ->tab('unit-test-tab-2', ['tab2'], 'Unit Test Tab 2')
+                ->sidebar('unit-test-sidebar-1', ['sidebar1'], 'Unit Test Sidebar 1')
+                ->sidebar('unit-test-sidebar-2', ['sidebar2'], 'Unit Test Sidebar 2')
+                ->action('unit-test-action-1', ['action1'], 'Unit Test Action 1')
+                ->action('unit-test-action-2', ['action2'], 'Unit Test Action 2')
                 ->toArray();
         $expected = [
             'page' => [
@@ -67,12 +67,12 @@ class PageBuilderTest extends TestCase
     public function testLanguageParse()
     {
         $actual = Builder::page('model.page-name')
-            ->tab('model.unit-tab', '', ['tab1'])
-            ->tab('model.unit-tab-2', '', ['tab2'])
-            ->sidebar('model.unit-sidebar', '', ['sidebar1'])
-            ->sidebar('model.unit-sidebar-2', '', ['sidebar2'])
-            ->action('model.unit-action', '', ['action1'])
-            ->action('model.unit-action-2', '', ['action2'])
+            ->tab('model.unit-tab', ['tab1'])
+            ->tab('model.unit-tab-2', ['tab2'])
+            ->sidebar('model.unit-sidebar', ['sidebar1'])
+            ->sidebar('model.unit-sidebar-2', ['sidebar2'])
+            ->action('model.unit-action', ['action1'])
+            ->action('model.unit-action-2', ['action2'])
             ->toArray();
         $expected = [
             'page' => [

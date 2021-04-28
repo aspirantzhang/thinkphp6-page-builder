@@ -66,7 +66,7 @@ class PageBuilder extends Common
     }
 
     // Page or Modal
-    public function tab(string $name = 'basic', string $title = '', array $data = [])
+    public function tab(string $name = 'basic', array $data = [], string $title = '')
     {
         $tab = [
             'name' => $name,
@@ -91,7 +91,7 @@ class PageBuilder extends Common
         return $this;
     }
 
-    public function sidebar(string $name = 'sidebar', string $title = '', array $data = [])
+    public function sidebar(string $name = 'sidebar', array $data = [], string $title = '')
     {
         $sidebar = [
             'name' => $name,
@@ -116,7 +116,7 @@ class PageBuilder extends Common
         return $this;
     }
 
-    public function action(string $name = 'actions', string $title = '', array $data = [])
+    public function action(string $name = 'actions', array $data = [], string $title = '')
     {
         $action = [
             'name' => $name,
