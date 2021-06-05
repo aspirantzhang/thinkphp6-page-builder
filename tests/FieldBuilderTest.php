@@ -28,7 +28,7 @@ class FieldBuilderTest extends TestCase
     {
         $actual = (array)Builder::field('unitTest', 'Unit Test')
                 ->type('switch')
-                ->sorter(true)
+                ->listSorter(true)
                 ->editDisabled(true)
                 ->hideInColumn(true)
                 ->mode('multiple')
@@ -50,7 +50,7 @@ class FieldBuilderTest extends TestCase
     {
         $actual = (array)Builder::field('model.unitTest')
                 ->type('switch')
-                ->sorter(true)
+                ->listSorter(true)
                 ->editDisabled(true)
                 ->hideInColumn(true)
                 ->mode('multiple')

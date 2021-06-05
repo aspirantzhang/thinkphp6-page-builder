@@ -88,7 +88,7 @@ class FieldBuilder extends Common
         return $this;
     }
 
-    public function sorter(bool $value)
+    public function listSorter(bool $value)
     {
         $this->sorter = $value;
 
