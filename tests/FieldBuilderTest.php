@@ -123,6 +123,20 @@ class FieldBuilderTest extends TestCase
             'mode' => null,
         ];
         $this->assertEqualsCanonicalizing($actionsExpected, $actionsActual);
+
+        $i18nActual = (array)Builder::field('i18n', 'Unit Test I18n')->type('i18n');
+        $i18nExpected = [
+            'name' => 'i18n',
+            'title' => 'Unit Test I18n',
+            'type' => 'i18n',
+            'data' => 'Valid Config',
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => null,
+        ];
+
+        $this->assertEqualsCanonicalizing($i18nExpected, $i18nActual);
     }
 
     public function testUnknownFieldType()

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace aspirantzhang\TPAntdBuilder;
 
+use think\facade\Config;
+
 class FieldBuilder extends Common
 {
     public $name;
@@ -77,6 +79,9 @@ class FieldBuilder extends Common
                         'value' => 0,
                     ],
                 ];
+                break;
+            case 'i18n':
+                $this->data = Config::get('lang.allow_lang_list');
                 break;
             
             default:
