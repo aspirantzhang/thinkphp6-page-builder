@@ -6,9 +6,20 @@ namespace aspirantzhang\TPAntdBuilder;
 
 class I18nBuilder extends Common
 {
-    public $fields = [];
+    public $page = [];
+    public $layout = [];
 
-    public function i18n(array $langCodes, array $fields)
+    public function i18n(string $title = '')
+    {
+        $this->page['title'] = $title;
+        if (strpos($title, '.')) {
+            $this->page['title'] = $this->lang($title);
+        }
+
+        return $this;
+    }
+
+    public function layout(array $langCodes, array $fields)
     {
         $result = [];
         foreach ($langCodes as $langCode) {
@@ -17,10 +28,12 @@ class I18nBuilder extends Common
                 'data' => $fields,
             ];
         }
-        $this->fields = $result;
+        $this->layout = $result;
 
         return $this;
     }
+
+
 
     public function toArray(): array
     {

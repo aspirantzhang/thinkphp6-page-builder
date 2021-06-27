@@ -25,8 +25,8 @@ class Builder
     {
         return (new ElementBuilder());
     }
-    public static function i18n(array $langCodes, array $fields)
+    public static function i18n(string $title)
     {
-        return (new I18nBuilder())->i18n($langCodes, $fields);
+        return (new I18nBuilder())->i18n($title);
     }
 }
