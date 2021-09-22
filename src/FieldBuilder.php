@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 use think\facade\Config;
 
@@ -23,14 +23,14 @@ class FieldBuilder extends Common
         $this->title = $title;
 
         if ($title === '') {
-            $this->title = $this->lang($name);
+            $this->title = __($name);
         }
 
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
             $this->name = $nameId[1];
             if ($title === '') {
-                $this->title = $this->lang($name);
+                $this->title = __($name);
             }
         }
 
@@ -53,15 +53,15 @@ class FieldBuilder extends Common
                 $this->type = 'select';
                 $this->data = [
                     [
-                        'title' => $this->lang('onlyTrashed'),
+                        'title' => __('onlyTrashed'),
                         'value' => 'onlyTrashed'
                     ],
                     [
-                        'title' => $this->lang('withTrashed'),
+                        'title' => __('withTrashed'),
                         'value' => 'withTrashed'
                     ],
                     [
-                        'title' => $this->lang('withoutTrashed'),
+                        'title' => __('withoutTrashed'),
                         'value' => 'withoutTrashed'
                     ],
                 ];
@@ -71,11 +71,11 @@ class FieldBuilder extends Common
             case 'switch':
                 $this->data = [
                     [
-                        'title' => $this->lang('enabled'),
+                        'title' => __('enabled'),
                         'value' => 1,
                     ],
                     [
-                        'title' => $this->lang('disabled'),
+                        'title' => __('disabled'),
                         'value' => 0,
                     ],
                 ];
@@ -83,7 +83,7 @@ class FieldBuilder extends Common
             case 'i18n':
                 $this->data = Config::get('lang.allow_lang_list');
                 break;
-            
+
             default:
                 # code...
                 break;

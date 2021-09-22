@@ -1,7 +1,8 @@
 {
-  "name": "aspirantzhang/thinkphp-antdesign-builder",
-  "description": "An api page builder for AntDesign based on ThinkPHP 6",
+  "name": "aspirantzhang/octopus-page-builder",
+  "description": "Tools for building page components in Octopus.",
   "type": "library",
+  "version": "0.0.1-dev",
   "license": "MIT",
   "authors": [
     {
@@ -12,16 +13,21 @@
   "minimum-stability": "stable",
   "autoload": {
     "psr-4": {
-      "aspirantzhang\\TPAntdBuilder\\": "src/"
+      "aspirantzhang\\octopusPageBuilder\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "aspirantzhang\\test\\antdBuilder\\": "tests"
+      "aspirantzhang\\test\\octopusPageBuilder\\": "tests"
     }
+  },
+  "require": {
+    "php": ">=7.4.0",
+    "aspirantzhang/octopus-helper": "dev-main"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.5",
-    "mockery/mockery": "^1.4"
+    "mockery/mockery": "^1.4",
+    "phpstan/phpstan": "^0.12.93"
   }
 }

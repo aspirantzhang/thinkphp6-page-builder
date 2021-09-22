@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 class PageBuilder extends Common
 {
@@ -22,7 +22,7 @@ class PageBuilder extends Common
             $nameId = explode('.', $name, 2);
             $this->page['name'] = $nameId[1];
             if ($title === '') {
-                $this->page['title'] = $this->lang($name);
+                $this->page['title'] = __($name);
             }
         }
 
@@ -75,14 +75,14 @@ class PageBuilder extends Common
         ];
 
         if ($title === '') {
-            $tab['title'] = $this->lang($name);
+            $tab['title'] = __($name);
         }
 
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
             $tab['name'] = $nameId[1];
             if ($title === '') {
-                $tab['title'] = $this->lang($name);
+                $tab['title'] = __($name);
             }
         }
 
@@ -100,14 +100,14 @@ class PageBuilder extends Common
         ];
 
         if ($title === '') {
-            $sidebar['title'] = $this->lang($name);
+            $sidebar['title'] = __($name);
         }
 
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
             $sidebar['name'] = $nameId[1];
             if ($title === '') {
-                $sidebar['title'] = $this->lang($name);
+                $sidebar['title'] = __($name);
             }
         }
 
@@ -125,17 +125,17 @@ class PageBuilder extends Common
         ];
 
         if ($title === '') {
-            $action['title'] = $this->lang($name);
+            $action['title'] = __($name);
         }
 
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
             $action['name'] = $nameId[1];
             if ($title === '') {
-                $action['title'] = $this->lang($name);
+                $action['title'] = __($name);
             }
         }
-        
+
         $this->layout['actions'][] = $action;
 
         return $this;

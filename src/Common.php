@@ -2,12 +2,8 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 class Common
 {
-    public function lang(string $name)
-    {
-        return \think\facade\Lang::get($name);
-    }
 }

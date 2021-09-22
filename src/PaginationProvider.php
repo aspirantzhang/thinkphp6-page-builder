@@ -2,20 +2,17 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 use think\Paginator;
 
-/**
- * AntDesignPro Pagination.
- */
-class AntdPaginationProvider extends Paginator
+class PaginationProvider extends Paginator
 {
     public function toArray(): array
     {
         try {
             $total = $this->total();
-        } catch (DomainException $e) {
+        } catch (\DomainException $e) {
             $total = null;
         }
 

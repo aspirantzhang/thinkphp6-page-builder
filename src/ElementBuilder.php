@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 class ElementBuilder extends Common
 {
@@ -10,11 +10,11 @@ class ElementBuilder extends Common
     {
         return [
             [
-                'title' => $this->lang('enabled'),
+                'title' => __('enabled'),
                 'value' => 1,
             ],
             [
-                'title' => $this->lang('disabled'),
+                'title' => __('disabled'),
                 'value' => 0,
             ],
         ];

@@ -9,6 +9,7 @@
          processIsolation="false"
          stopOnError="false"
          stopOnFailure="false"
+         colors="true"
          verbose="true">
     <testsuites>
         <testsuite name="default">
@@ -22,7 +23,8 @@
             <directory suffix=".php">src</directory>
         </include>
         <exclude>
-            <file>src/AntdPaginationProvider.php</file>
+            <file>PaginationProvider</file>
+            <directory>command</directory>
         </exclude>
     </coverage>
 </phpunit>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 class ButtonBuilder extends Common
 {
@@ -20,14 +20,14 @@ class ButtonBuilder extends Common
         $this->title = $title;
 
         if ($title === '') {
-            $this->title = $this->lang($name);
+            $this->title = __($name);
         }
 
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
             $this->name = $nameId[1];
             if ($title === '') {
-                $this->title = $this->lang($name);
+                $this->title = __($name);
             }
         }
 
@@ -40,7 +40,7 @@ class ButtonBuilder extends Common
 
         return $this;
     }
-    
+
     public function type(string $value)
     {
         $this->type = $value;

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\test\antdBuilder;
+namespace aspirantzhang\test\octopusPageBuilder;
 
-use aspirantzhang\TPAntdBuilder\Builder;
+use aspirantzhang\octopusPageBuilder\Builder;
 
 class ButtonBuilderTest extends TestCase
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace aspirantzhang\test\antdBuilder;
+namespace aspirantzhang\test\octopusPageBuilder;
 
 use Mockery as m;
 

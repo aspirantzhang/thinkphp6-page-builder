@@ -2,11 +2,8 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
-/**
- * Ant Design builder
- */
 class Builder
 {
     public static function page(string $name, string $title = '')

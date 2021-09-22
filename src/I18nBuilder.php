@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace aspirantzhang\TPAntdBuilder;
+namespace aspirantzhang\octopusPageBuilder;
 
 class I18nBuilder extends Common
 {
@@ -13,7 +13,7 @@ class I18nBuilder extends Common
     {
         $this->page['title'] = $title;
         if (strpos($title, '.')) {
-            $this->page['title'] = $this->lang($title);
+            $this->page['title'] = __($title);
         }
 
         return $this;

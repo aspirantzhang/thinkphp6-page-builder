@@ -1,0 +1,4 @@
+ignore:
+  - "src/PaginationProvider"
+coverage:
+  range: "60...90"
