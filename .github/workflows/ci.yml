@@ -1,0 +1,66 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ["8.0", "7.4"]
+
+    name: PHP-${{ matrix.php-versions }} - ${{ matrix.operating-system}}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache/Restore composer cache
+        uses: actions/cache@v2
+        id: actions-cache
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-
+
+      - name: Cache/Restore vendor folder
+        uses: actions/cache@v2
+        id: vendor-cache
+        with:
+          path: vendor
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/composer.lock') }}
+
+      - name: Install Dependencies
+        if: steps.vendor-cache.outputs.cache-hit != 'true'
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+
+      - name: Unit Test
+        uses: php-actions/phpunit@v3
+        with:
+          php_version: ${{ matrix.php-versions }}
+          php_extensions: xdebug pdo_mysql
+          configuration: phpunit.xml.dist
+          args: --coverage-clover runtime/.phpunit.cache/coverage.xml
+        env:
+          XDEBUG_MODE: coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          files: runtime/.phpunit.cache/coverage.xml
+          flags: unittests
+          fail_ci_if_error: true
+          verbose: true
+
+      - name: Dependencies security check
+        uses: symfonycorp/security-checker-action@v2
+
+      - name: Static analysis
+        run: ./vendor/bin/phpstan analyse
