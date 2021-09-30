@@ -10,6 +10,7 @@ class PageBuilder extends Common
         'name' => '',
         'title' => '',
         'type' => '',
+        'options' => [],
     ];
     public $layout = [];
 
@@ -32,14 +33,6 @@ class PageBuilder extends Common
     public function type(string $type)
     {
         $this->page['type'] = $type;
-
-        return $this;
-    }
-
-    // BasicList
-    public function searchBar(bool $value = false)
-    {
-        $this->page['searchBar'] = $value;
 
         return $this;
     }
@@ -138,6 +131,12 @@ class PageBuilder extends Common
 
         $this->layout['actions'][] = $action;
 
+        return $this;
+    }
+
+    public function options(array $options)
+    {
+        $this->page['options'] = $options;
         return $this;
     }
 

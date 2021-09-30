@@ -16,6 +16,7 @@ class PageBuilderTest extends TestCase
                 'name' => 'page-name',
                 'title' => '',
                 'type' => '',
+                'options' => []
             ],
             'layout' => []
         ];
@@ -25,7 +26,10 @@ class PageBuilderTest extends TestCase
     public function testValidParamsShouldReturnCorrectResult()
     {
         $actual = Builder::page('unit-test-page', 'Unit Test Page')->type('unitTestType')
-                ->searchBar(true)
+                ->options([
+                    'search' => true,
+                    'revision' => false,
+                ])
                 ->tableToolBar(['tableToolBar'])
                 ->batchToolBar(['batchToolBar'])
                 ->tableColumn(['tableColumn'])
@@ -41,7 +45,10 @@ class PageBuilderTest extends TestCase
                 'name' => 'unit-test-page',
                 'title' => 'Unit Test Page',
                 'type' => 'unitTestType',
-                'searchBar' => true
+                'options' => [
+                    'search' => true,
+                    'revision' => false,
+                ]
             ],
             'layout' => [
                 'tableToolbar' => ['tableToolBar'],
@@ -79,6 +86,7 @@ class PageBuilderTest extends TestCase
                 'name' => 'page-name',
                 'title' => 'Valid translation',
                 'type' => '',
+                'options' => []
             ],
             'layout' => [
                 'tabs' => [
