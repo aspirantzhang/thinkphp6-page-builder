@@ -19,11 +19,16 @@ class PageBuilder extends Common
         $this->page['name'] = $name;
         $this->page['title'] = $title;
 
+        // eg: admin-layout.admin-add
         if (strpos($name, '.')) {
             $nameId = explode('.', $name, 2);
-            $this->page['name'] = $nameId[1];
+            $this->page['name'] = $nameId[1];   //admin-add
             if ($title === '') {
-                $this->page['title'] = __($name);
+                $this->page['title'] = __($name);   //Admin Add
+            }
+            // add revision = false in page option when adding records
+            if (strpos($nameId[1], '-add')) {
+                $this->page['options']['revision'] = false;
             }
         }
 

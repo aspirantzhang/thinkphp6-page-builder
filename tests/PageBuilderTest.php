@@ -23,6 +23,23 @@ class PageBuilderTest extends TestCase
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
 
+    public function testDefaultValueWhenAddingRecords()
+    {
+        $actual = Builder::page('model-name.model-add')->toArray();
+        $expected = [
+            'page' => [
+                'name' => 'model-add',
+                'title' => 'Valid translation',
+                'type' => '',
+                'options' => [
+                    'revision' => false
+                ]
+            ],
+            'layout' => []
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
+
     public function testValidParamsShouldReturnCorrectResult()
     {
         $actual = Builder::page('unit-test-page', 'Unit Test Page')->type('unitTestType')
