@@ -156,4 +156,24 @@ class FieldBuilderTest extends TestCase
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
+
+    public function testTitleFieldConfig()
+    {
+        $actual = (array)Builder::field('test', 'Test')
+                ->type('input')
+                ->titleField(true);
+
+        $expected = [
+            'name' => 'test',
+            'title' => 'Test',
+            'type' => 'input',
+            'data' => [],
+            'hideInColumn' => null,
+            'sorter' => null,
+            'editDisabled' => null,
+            'mode' => null,
+            'titleField' => true
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
 }

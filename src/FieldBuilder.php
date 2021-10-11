@@ -127,4 +127,11 @@ class FieldBuilder extends Common
 
         return $this;
     }
+
+    public function titleField(bool $value = false)
+    {
+        $this->titleField = $value;
+
+        return $this;
+    }
 }
