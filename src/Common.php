@@ -6,4 +6,8 @@ namespace aspirantzhang\octopusPageBuilder;
 
 class Common
 {
+    public function toArray()
+    {
+        return (array)$this;
+    }
 }

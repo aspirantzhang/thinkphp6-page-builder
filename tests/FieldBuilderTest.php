@@ -176,4 +176,11 @@ class FieldBuilderTest extends TestCase
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
+
+    public function testToArray()
+    {
+        $instance = Builder::field('test', 'Test')->type('input')->toArray();
+
+        $this->assertEquals('array', gettype($instance));
+    }
 }
