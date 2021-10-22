@@ -10,16 +10,11 @@ class FieldBuilderTest extends TestCase
 {
     public function testEmptyParamsShouldReturnInitSchema()
     {
-        $actual = Builder::field('');
+        $actual = Builder::field('unit-test')->toArray();
         $expected = [
-            'name' => '',
+            'name' => 'unit-test',
             'title' => 'Valid translation',
             'type' => 'text',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null
         ];
         $this->assertEqualsCanonicalizing($expected, (array)$actual);
     }
@@ -32,7 +27,8 @@ class FieldBuilderTest extends TestCase
                 ->editDisabled(true)
                 ->hideInColumn(true)
                 ->mode('multiple')
-                ->data(['unitTestData']);
+                ->data(['unitTestData'])
+                ->toArray();
         $expected = [
             'name' => 'unitTest',
             'title' => 'Unit Test',
@@ -54,7 +50,8 @@ class FieldBuilderTest extends TestCase
                 ->editDisabled(true)
                 ->hideInColumn(true)
                 ->mode('multiple')
-                ->data(['unitTestData']);
+                ->data(['unitTestData'])
+                ->toArray();
         $expected = [
             'name' => 'unitTest',
             'title' => 'Valid translation',
@@ -71,69 +68,57 @@ class FieldBuilderTest extends TestCase
     public function testMoreFieldType()
     {
         $selectActual = (array)Builder::field('unitTest', 'Unit Test')
-                ->type('select');
+                ->type('select')
+                ->toArray();
         $selectExpected = [
             'name' => 'unitTest',
             'title' => 'Unit Test',
             'type' => 'select',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
             'mode' => 'multiple',
         ];
         $this->assertEqualsCanonicalizing($selectExpected, $selectActual);
 
         $trashActual = (array)Builder::field('unitTest', 'Unit Test')
-                ->type('trash');
+                ->type('trash')
+                ->toArray();
         $trashExpected = [
             'name' => 'unitTest',
             'title' => 'Unit Test',
             'type' => 'select',
             'data' => [
-                        [
-                            'title' => 'Valid translation',
-                            'value' => 'onlyTrashed'
-                        ],
-                        [
-                            'title' => 'Valid translation',
-                            'value' => 'withTrashed'
-                        ],
-                        [
-                            'title' => 'Valid translation',
-                            'value' => 'withoutTrashed'
-                        ],
-                    ],
+                [
+                    'title' => 'Valid translation',
+                    'value' => 'onlyTrashed'
+                ],
+                [
+                    'title' => 'Valid translation',
+                    'value' => 'withTrashed'
+                ],
+                [
+                    'title' => 'Valid translation',
+                    'value' => 'withoutTrashed'
+                ],
+            ],
             'hideInColumn' => true,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => ''
         ];
         $this->assertEqualsCanonicalizing($trashExpected, $trashActual);
 
-        $actionsActual = (array)Builder::field('actions', 'Unit Test Action');
+        $actionsActual = (array)Builder::field('actions', 'Unit Test Action')->toArray();
+        ;
         $actionsExpected = [
             'name' => 'actions',
             'title' => 'Unit Test Action',
             'type' => 'actions',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null,
         ];
         $this->assertEqualsCanonicalizing($actionsExpected, $actionsActual);
 
-        $i18nActual = (array)Builder::field('i18n', 'Unit Test I18n')->type('i18n');
+        $i18nActual = (array)Builder::field('i18n', 'Unit Test I18n')->type('i18n')->toArray();
+        ;
         $i18nExpected = [
             'name' => 'i18n',
             'title' => 'Unit Test I18n',
             'type' => 'i18n',
             'data' => 'Valid Config',
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null,
         ];
 
         $this->assertEqualsCanonicalizing($i18nExpected, $i18nActual);
@@ -142,17 +127,13 @@ class FieldBuilderTest extends TestCase
     public function testUnknownFieldType()
     {
         $actual = (array)Builder::field('unitTest', 'Unit Test')
-                ->type('whatever');
+                ->type('whatever')
+                ->toArray();
 
         $expected = [
             'name' => 'unitTest',
             'title' => 'Unit Test',
             'type' => 'whatever',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
@@ -161,17 +142,13 @@ class FieldBuilderTest extends TestCase
     {
         $actual = (array)Builder::field('test', 'Test')
                 ->type('input')
-                ->titleField(true);
+                ->titleField(true)
+                ->toArray();
 
         $expected = [
             'name' => 'test',
             'title' => 'Test',
             'type' => 'input',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null,
             'titleField' => true
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
@@ -194,11 +171,6 @@ class FieldBuilderTest extends TestCase
             'name' => 'unit test',
             'title' => 'Valid translation',
             'type' => 'text',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null,
             'reactions' => [
                 'type' => 'active',
                 'property' => 'visible',
@@ -227,11 +199,6 @@ class FieldBuilderTest extends TestCase
             'name' => 'unit test',
             'title' => 'Valid translation',
             'type' => 'text',
-            'data' => [],
-            'hideInColumn' => null,
-            'sorter' => null,
-            'editDisabled' => null,
-            'mode' => null,
             'reactions' => [
                 'type' => 'passive',
                 'property' => 'visible',

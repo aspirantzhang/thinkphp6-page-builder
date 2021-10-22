@@ -16,6 +16,8 @@ class FieldBuilder extends Common
     public $sorter = null;
     public $editDisabled = null;
     public $mode = null;
+    public $titleField = null;
+    public $reactions = [];
 
     public function field(string $name, string $title = '')
     {
