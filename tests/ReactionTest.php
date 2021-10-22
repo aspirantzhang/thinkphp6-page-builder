@@ -30,4 +30,27 @@ class ReactionTest extends TestCase
         ];
         $this->assertEqualsCanonicalizing($actual, $expected);
     }
+
+    public function testSetMyVisible()
+    {
+        $actual = (new Reaction())->setMyVisible([
+            'field1' => 'value1',
+            'field2' => ['value2', 'value3']
+        ]);
+        $expected = [
+            'type' => 'passive',
+            'property' => 'visible',
+            'conditions' => [
+                [
+                    'dependency' => 'field1',
+                    'when' => 'value1',
+                ],
+                [
+                    'dependency' => 'field2',
+                    'when' => ['value2', 'value3']
+                ]
+            ]
+        ];
+        $this->assertEqualsCanonicalizing($actual, $expected);
+    }
 }

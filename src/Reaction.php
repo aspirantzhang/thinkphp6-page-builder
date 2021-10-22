@@ -23,4 +23,20 @@ class Reaction
             'conditions' => $conditions
         ];
     }
+
+    public function setMyVisible($data)
+    {
+        $conditions = [];
+        foreach ($data as $dependency => $value) {
+            $conditions[] = [
+                'dependency' => $dependency,
+                'when' => $value,
+            ];
+        }
+        return [
+            'type' => 'passive',
+            'property' => 'visible',
+            'conditions' => $conditions
+        ];
+    }
 }
