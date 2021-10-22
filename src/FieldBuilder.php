@@ -134,4 +134,18 @@ class FieldBuilder extends Common
 
         return $this;
     }
+
+    public function setTargetVisible(array $data)
+    {
+        $this->reactions = (new Reaction())->setTargetVisible($data);
+
+        return $this;
+    }
+
+    public function setMyVisible(array $data)
+    {
+        $this->reactions = (new Reaction())->setMyVisible($data);
+
+        return $this;
+    }
 }
