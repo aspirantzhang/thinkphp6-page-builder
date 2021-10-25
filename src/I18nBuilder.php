@@ -32,11 +32,4 @@ class I18nBuilder extends Common
 
         return $this;
     }
-
-
-
-    public function toArray(): array
-    {
-        return (array) $this;
-    }
 }
