@@ -16,6 +16,8 @@ class FieldBuilder extends Common
     public $sorter = null;
     public $editDisabled = null;
     public $mode = null;
+    public $titleField = null;
+    public $reactions = [];
 
     public function field(string $name, string $title = '')
     {
@@ -131,6 +133,20 @@ class FieldBuilder extends Common
     public function titleField(bool $value = false)
     {
         $this->titleField = $value;
+
+        return $this;
+    }
+
+    public function setTargetVisible(array $data)
+    {
+        $this->reactions = (new Reaction())->setTargetVisible($data);
+
+        return $this;
+    }
+
+    public function setMyVisible(array $data)
+    {
+        $this->reactions = (new Reaction())->setMyVisible($data);
 
         return $this;
     }
