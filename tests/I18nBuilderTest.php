@@ -15,7 +15,6 @@ class I18nBuilderTest extends TestCase
             'page' => [
                 'title' => '',
             ],
-            'layout' => []
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
