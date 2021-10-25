@@ -6,15 +6,10 @@ namespace aspirantzhang\octopusPageBuilder;
 
 class PageBuilder extends Common
 {
-    public $page = [
-        'name' => '',
-        'title' => '',
-        'type' => '',
-        'options' => [],
-    ];
-    public $layout = [];
+    private $page = [];
+    private $layout = [];
 
-    public function page(string $name, string $title = '')
+    public function page(string $name, string $title)
     {
         $this->page['name'] = $name;
         $this->page['title'] = $title;
@@ -69,7 +64,7 @@ class PageBuilder extends Common
         $tab = [
             'name' => $name,
             'title' => $title,
-            'data' => $data,
+            'data' => $this->cleanChildren($data),
         ];
 
         if ($title === '') {
@@ -94,7 +89,7 @@ class PageBuilder extends Common
         $sidebar = [
             'name' => $name,
             'title' => $title,
-            'data' => $data,
+            'data' => $this->cleanChildren($data),
         ];
 
         if ($title === '') {
@@ -119,7 +114,7 @@ class PageBuilder extends Common
         $action = [
             'name' => $name,
             'title' => $title,
-            'data' => $data,
+            'data' => $this->cleanChildren($data),
         ];
 
         if ($title === '') {
@@ -143,10 +138,5 @@ class PageBuilder extends Common
     {
         $this->page['options'] = $options;
         return $this;
-    }
-
-    public function toArray(): array
-    {
-        return (array) $this;
     }
 }

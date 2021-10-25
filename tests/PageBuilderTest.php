@@ -14,11 +14,8 @@ class PageBuilderTest extends TestCase
         $expected = [
             'page' => [
                 'name' => 'page-name',
-                'title' => '',
-                'type' => '',
-                'options' => []
+                'title' => ''
             ],
-            'layout' => []
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
@@ -30,12 +27,10 @@ class PageBuilderTest extends TestCase
             'page' => [
                 'name' => 'model-add',
                 'title' => 'Valid translation',
-                'type' => '',
                 'options' => [
                     'revision' => false
                 ]
             ],
-            'layout' => []
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
@@ -102,8 +97,6 @@ class PageBuilderTest extends TestCase
             'page' => [
                 'name' => 'page-name',
                 'title' => 'Valid translation',
-                'type' => '',
-                'options' => []
             ],
             'layout' => [
                 'tabs' => [
@@ -117,6 +110,105 @@ class PageBuilderTest extends TestCase
                 'actions' => [
                     [ 'name' => 'unit-action', 'title' => 'Valid translation', 'data' => ['action1'] ],
                     [ 'name' => 'unit-action-2', 'title' => 'Valid translation', 'data' => ['action2'] ],
+                ],
+            ]
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
+
+    public function testCleanChildren()
+    {
+        $actual = Builder::page('clean children')
+            ->tab('tab', [
+                [
+                    'name' => 'name',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ],
+                [
+                    'name' => 'name2',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ]
+            ])
+            ->sidebar('sidebar', [
+                [
+                    'name' => 'name',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ],
+                [
+                    'name' => 'name2',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ]
+            ])
+            ->action('action', [
+                [
+                    'name' => 'name',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ],
+                [
+                    'name' => 'name2',
+                    'prop-null' => null,
+                    'prop-zero' => 0,
+                    'prop-empty-array' => [],
+                    'prop-empty-string' => '',
+                ]
+            ])
+            ->toArray();
+        $expected = [
+            'page' => [
+                'name' => 'clean children',
+                'title' => '',
+            ],
+            'layout' => [
+                'tabs' => [
+                    [ 'name' => 'tab', 'title' => 'Valid translation', 'data' => [
+                        [
+                            'name' => 'name',
+                            'prop-zero' => 0,
+                        ],
+                        [
+                            'name' => 'name2',
+                            'prop-zero' => 0,
+                        ]
+                    ]],
+                ],
+                'sidebars' => [
+                    [ 'name' => 'sidebar', 'title' => 'Valid translation', 'data' => [
+                        [
+                            'name' => 'name',
+                            'prop-zero' => 0,
+                        ],
+                        [
+                            'name' => 'name2',
+                            'prop-zero' => 0,
+                        ]
+                    ]],
+                ],
+                'actions' => [
+                    [ 'name' => 'action', 'title' => 'Valid translation', 'data' => [
+                        [
+                            'name' => 'name',
+                            'prop-zero' => 0,
+                        ],
+                        [
+                            'name' => 'name2',
+                            'prop-zero' => 0,
+                        ]
+                    ]],
                 ],
             ]
         ];
