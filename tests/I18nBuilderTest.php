@@ -39,4 +39,37 @@ class I18nBuilderTest extends TestCase
         ];
         $this->assertEqualsCanonicalizing($expected, $actual);
     }
+
+    public function testI18nLayoutCleanChildren()
+    {
+        $actual = Builder::i18n('foo.bar')->layout(['en-us', 'zh-cn'], [
+            'name' => 'name',
+            'prop-null' => null,
+            'prop-zero' => 0,
+            'prop-empty-array' => [],
+            'prop-empty-string' => '',
+        ])->toArray();
+        $expected = [
+            'page' => [
+                'title' => 'Valid translation'
+            ],
+            'fields' => [
+                [
+                    'name' => 'en-us',
+                    'data' => [
+                        'name' => 'name',
+                        'prop-zero' => 0,
+                    ]
+                ],
+                [
+                    'name' => 'zh-cn',
+                    'data' => [
+                        'name' => 'name',
+                        'prop-zero' => 0,
+                    ]
+                ]
+            ]
+        ];
+        $this->assertEqualsCanonicalizing($expected, $actual);
+    }
 }
