@@ -11,8 +11,11 @@ class Common
         return $this->cleanArrayElement((array)$this);
     }
 
-    public function cleanArrayElement(array|object $target)
+    public function cleanArrayElement($target)
     {
+        if (!is_array($target) && gettype($target) !== 'object') {
+            return $target;
+        }
         return array_filter((array)$target, function ($value) {
             return !empty($value) || $value === 0 || $value === '0';
         });
