@@ -6,8 +6,8 @@ namespace aspirantzhang\octopusPageBuilder;
 
 class PageBuilder extends Common
 {
-    private $page = [];
-    private $layout = [];
+    public $page = [];
+    public $layout = [];
 
     public function page(string $name, string $title)
     {
