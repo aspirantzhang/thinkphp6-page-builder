@@ -8,7 +8,7 @@ use aspirantzhang\octopusPageBuilder\Builder;
 
 class PageBuilderTest extends TestCase
 {
-    public function testEmptyParamsShouldReturnInitSchema()
+    public function testPageBuilderInitSchema()
     {
         $actual = Builder::page('page-name')->toArray();
         $expected = [

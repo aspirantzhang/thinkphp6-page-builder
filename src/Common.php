@@ -6,21 +6,23 @@ namespace aspirantzhang\octopusPageBuilder;
 
 class Common
 {
-    public function toArray(array $target = null)
+    public function toArray()
     {
-        if ($target === null) {
-            $target = (array)$this;
-        }
-        return array_values(array_filter($target, function ($value) {
-            return !empty($value) || $value === 0 || $value === '0';
-        }));
+        return $this->cleanArrayElement((array)$this);
     }
 
-    public function cleanChildren(array $data): array
+    public function cleanArrayElement(array|object $target)
+    {
+        return array_filter((array)$target, function ($value) {
+            return !empty($value) || $value === 0 || $value === '0';
+        });
+    }
+
+    public function cleanChildrenEmptyValues(array $data): array
     {
         return array_map(function ($children) {
-            if (is_array($children)) {
-                return $this->toArray($children);
+            if (is_array($children) || gettype($children) === 'object') {
+                return $this->cleanArrayElement($children);
             }
             return $children;
         }, $data);

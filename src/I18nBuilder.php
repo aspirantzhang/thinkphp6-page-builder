@@ -23,10 +23,10 @@ class I18nBuilder extends Common
     {
         $result = [];
         foreach ($langCodes as $langCode) {
-            $result[] = $this->cleanChildren([
+            $result[] = [
                 'name' => $langCode,
-                'data' => $fields,
-            ]);
+                'data' => $this->cleanChildrenEmptyValues($fields),
+            ];
         }
         $this->layout = $result;
 

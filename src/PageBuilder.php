@@ -64,7 +64,7 @@ class PageBuilder extends Common
         $tab = [
             'name' => $name,
             'title' => $title,
-            'data' => $this->cleanChildren($data),
+            'data' => $this->cleanChildrenEmptyValues($data),
         ];
 
         if ($title === '') {
@@ -89,7 +89,7 @@ class PageBuilder extends Common
         $sidebar = [
             'name' => $name,
             'title' => $title,
-            'data' => $this->cleanChildren($data),
+            'data' => $this->cleanChildrenEmptyValues($data),
         ];
 
         if ($title === '') {
@@ -114,7 +114,7 @@ class PageBuilder extends Common
         $action = [
             'name' => $name,
             'title' => $title,
-            'data' => $this->cleanChildren($data),
+            'data' => $this->cleanChildrenEmptyValues($data),
         ];
 
         if ($title === '') {
