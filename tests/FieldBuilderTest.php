@@ -172,16 +172,18 @@ class FieldBuilderTest extends TestCase
             'title' => 'Valid translation',
             'type' => 'text',
             'reactions' => [
-                'type' => 'active',
-                'property' => 'visible',
-                'conditions' => [
-                    [
-                        'target' => ['key1', 'key2'],
-                        'when' => 'value1',
-                    ],
-                    [
-                        'target' => ['key3'],
-                        'when' => 'value2'
+                [
+                    'type' => 'active',
+                    'property' => 'visible',
+                    'conditions' => [
+                        [
+                            'target' => ['key1', 'key2'],
+                            'when' => 'value1',
+                        ],
+                        [
+                            'target' => ['key3'],
+                            'when' => 'value2'
+                        ]
                     ]
                 ]
             ]
@@ -200,16 +202,18 @@ class FieldBuilderTest extends TestCase
             'title' => 'Valid translation',
             'type' => 'text',
             'reactions' => [
-                'type' => 'passive',
-                'property' => 'visible',
-                'conditions' => [
-                    [
-                        'dependency' => 'field1',
-                        'when' => 'value1',
-                    ],
-                    [
-                        'dependency' => 'field2',
-                        'when' => ['value2', 'value3']
+                [
+                    'type' => 'passive',
+                    'property' => 'visible',
+                    'conditions' => [
+                        [
+                            'dependency' => 'field1',
+                            'when' => 'value1',
+                        ],
+                        [
+                            'dependency' => 'field2',
+                            'when' => ['value2', 'value3']
+                        ]
                     ]
                 ]
             ]
